@@ -12,5 +12,8 @@ public class Main {
         Equipo boca1 = new Equipo("boca","description");
 
         System.out.println(partido1.resultado(boca1));
+
+
+        System.out.println();
     }
 }
