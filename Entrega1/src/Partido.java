@@ -1,7 +1,6 @@
 public class Partido {
     private Equipo equipo1;
     private Equipo equipo2;
-
     private int golesEquipo1;
     private int golesEquipo2;
 
@@ -47,7 +46,6 @@ public class Partido {
     public Partido() {
 
     }
-
     public ResultadoEnum resultado(Equipo e) {
         if (e == equipo1) {
             if (golesEquipo1 > golesEquipo2) return ResultadoEnum.Ganador;
@@ -59,6 +57,8 @@ public class Partido {
             return ResultadoEnum.Perdedor;
         }
 
-    }
 
-}
+
+
+
+}}
