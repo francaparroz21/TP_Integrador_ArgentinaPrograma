@@ -46,7 +46,8 @@ public class Partido {
     public Partido() {
 
     }
-    public ResultadoEnum resultado(Equipo e) {
+
+    public ResultadoEnum resultado(Equipo e) throws EquipoNoEncontrado {
         if (e == equipo1) {
             if (golesEquipo1 > golesEquipo2) return ResultadoEnum.Ganador;
             else if (golesEquipo1 == golesEquipo2) return ResultadoEnum.Empate;
@@ -56,9 +57,6 @@ public class Partido {
             else if (golesEquipo1 == golesEquipo2) return ResultadoEnum.Empate;
             return ResultadoEnum.Perdedor;
         }
-
-
-
-
-
-}}
+        throw new EquipoNoEncontrado();
+    }
+}

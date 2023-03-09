@@ -1,11 +1,16 @@
-public class Main {
-    public static void main(String[] args) {
-        Equipo river = new Equipo("River","Asd");
-        Equipo boca = new Equipo("Boca","Asd");
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 
-        Partido partido1 = new Partido(river,boca,1,2);
-        System.out.println(partido1.resultadoEquipo1());
-        System.out.println("=".repeat(50));
-        System.out.println(partido1.resultadoEquipo2());
+public class Main {
+    public static void main(String[] args) throws EquipoNoEncontrado {
+        Equipo boca = new Equipo("boca","description");
+        Equipo river = new Equipo("river","description");
+        Partido partido1 = new Partido(boca,river,2,2);
+
+        Equipo boca1 = new Equipo("boca","description");
+
+        System.out.println(partido1.resultado(boca1));
     }
 }
