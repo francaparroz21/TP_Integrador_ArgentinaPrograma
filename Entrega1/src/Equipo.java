@@ -1,11 +1,20 @@
 public class Equipo {
-    //Atributtes
+    private int id;
     private String nombre;
     private String descripcion;
 
-    public Equipo(String nombre, String descripcion) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Equipo(int id, String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.id = id;
     }
 
     public Equipo() {
@@ -28,4 +37,10 @@ public class Equipo {
     }
 
 
+    @Override
+    public String toString() {
+        return  "ID: " + getId()+"\n" +
+                "Nombre: " + getNombre() + "\n" +
+                "Descripcion: " + getDescripcion();
+    }
 }
