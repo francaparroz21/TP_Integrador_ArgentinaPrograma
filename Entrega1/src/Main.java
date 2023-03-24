@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
 public class Main {
@@ -23,14 +24,15 @@ public class Main {
         teams.add(racing);
 
         Partido partido1 = new Partido();
+        ArrayList<String> resultados = new ArrayList<String>();
 
-        for (int i = 0; i<Files.readAllLines(Path.of(pathResultados)).size(); i++){
-            if (i != 0){
-                for(String c : Files.lines(pathResultados)) {
-                    System.out.println(cadena);
-                }
-            }
+        for (int i = 1; i<Files.readAllLines(Path.of(pathResultados)).size(); i++){
+            resultados.add(Files.readAllLines(Path.of(pathResultados)).get(i));
         }
+
+
+
+
     }
 
     public static Equipo findById(ArrayList<Equipo> teams, int id) throws TeamNotFound {
