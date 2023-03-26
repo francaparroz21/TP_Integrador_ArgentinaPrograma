@@ -8,9 +8,9 @@ public class Main {
 
 
         //Path de los resultados, pronosticos y sus respectivos arrays.
-        String pathResultados = "C:\\Users\\franc\\OneDrive\\Escritorio\\TP_Integrador_ArgentinaPrograma\\Entrega1\\archivos\\resultados.csv";
+        String pathResultados = "C:\\Users\\PIL\\Desktop\\TP_Integrador_ArgentinaPrograma\\archivos\\resultados.csv";
         ArrayList<String> resultadosPartidos = new ArrayList<String>();
-        String pathPronosticos = "C:\\Users\\franc\\OneDrive\\Escritorio\\TP_Integrador_ArgentinaPrograma\\Entrega1\\archivos\\pronosticos.csv";
+        String pathPronosticos = "C:\\Users\\PIL\\Desktop\\TP_Integrador_ArgentinaPrograma\\archivos\\pronosticos.csv";
         ArrayList<String> resultadosPronosticos = new ArrayList<String>();
 
         //Creamos cada equipor que van a jugar los partidos.
@@ -28,9 +28,10 @@ public class Main {
         ArrayList<Partido> partidos = new ArrayList<Partido>();
 
         /*  A partir de la lectura de 'resultados.csv' le añadimos la informacion a cada partido
-            por eso usamos el constructor vacio, para despues, mediante la lectura usamos setters
-             para los atributos de cada partido.
+            por eso usamos el constructor vacio, para despues, mediante la lectura usando los setters
+             cambiar los atributos de cada partido.
          */
+
         for (int i = 0; i < Files.readAllLines(Path.of(pathResultados)).size() - 1; i++) {
             resultadosPartidos.add(Files.readAllLines(Path.of(pathResultados)).get(i + 1).replaceAll(",", ""));
             partidos.add(new Partido());
@@ -43,10 +44,13 @@ public class Main {
                     case 3 -> partidos.get(i).setEquipo2(findById(teams, Character.getNumericValue(c)));
                 }
             }
+            //System.out.println(partidos.get(i).toString());
         }
+        //System.out.println("=".repeat(50));
 
         //Creamos array de pronosticos.
         ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
+        int countPoints = 0;
 
         //Leemos los pronosticos.
         for (int i = 0; i < Files.readAllLines(Path.of(pathPronosticos)).size() - 1; i++) {
@@ -65,10 +69,12 @@ public class Main {
                     }
                 }
             }
+            //System.out.println(pronosticos.get(i).toString());
+            if (pronosticos.get(i).puntos() == 1) countPoints++;
         }
-
-
+        System.out.println("*".repeat(50)+"\nEl jugador obtuvo: " + countPoints + " puntos.\n" + "*".repeat(50));
     }
+
 
     public static Equipo findById(ArrayList<Equipo> teams, int id) throws TeamNotFound {
         for (Equipo equipo : teams) {

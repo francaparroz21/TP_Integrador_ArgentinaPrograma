@@ -31,12 +31,13 @@ public class Pronostico {
         this.resultado = resultado;
     }
 
-    public int puntos() {
-        return 1;
+    public int puntos() throws TeamNotFound {
+        if (getPartido().resultado(getEquipo()) == getResultado()) return 1;
+        return 0;
     }
 
     @Override
     public String toString() {
-        return "Apuesta a : " + getEquipo().getNombre() + " - " + getResultado();
+        return "Apuesta: " + getEquipo().getNombre() + " - " + getResultado();
     }
 }
