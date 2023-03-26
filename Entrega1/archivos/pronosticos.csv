@@ -1,3 +1,4 @@
-Equipo 1 - id,Gana equipo 1,Empate,Gana equipo 2,Equipo 2 - id
-2,,,X,1
-1,,X,,3
+Equipo - id,Ganador,Empate,Perdedor
+2,,,X
+3,,X,
+1,,,X

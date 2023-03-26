@@ -3,6 +3,10 @@ public class Pronostico {
     private Equipo equipo;
     private ResultadoEnum resultado;
 
+    public Pronostico(Partido partido) {
+        this.partido = partido;
+    }
+
     public Partido getPartido() {
         return partido;
     }
@@ -29,5 +33,10 @@ public class Pronostico {
 
     public int puntos() {
         return 1;
+    }
+
+    @Override
+    public String toString() {
+        return "Apuesta a : " + getEquipo().getNombre() + " - " + getResultado();
     }
 }

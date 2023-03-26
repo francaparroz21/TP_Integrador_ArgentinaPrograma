@@ -1,21 +1,17 @@
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Optional;
 
 public class Main {
-    public static void main(String[] args) throws EquipoNoEncontrado, IOException, TeamNotFound {
+    public static void main(String[] args) throws IOException, TeamNotFound {
 
 
         //Path de los resultados, pronosticos y sus respectivos arrays.
         String pathResultados = "C:\\Users\\franc\\OneDrive\\Escritorio\\TP_Integrador_ArgentinaPrograma\\Entrega1\\archivos\\resultados.csv";
-        ArrayList<String> resultados = new ArrayList<String>();
+        ArrayList<String> resultadosPartidos = new ArrayList<String>();
         String pathPronosticos = "C:\\Users\\franc\\OneDrive\\Escritorio\\TP_Integrador_ArgentinaPrograma\\Entrega1\\archivos\\pronosticos.csv";
-        ArrayList<String> pronosticos = new ArrayList<String>();
+        ArrayList<String> resultadosPronosticos = new ArrayList<String>();
 
         //Creamos cada equipor que van a jugar los partidos.
         Equipo boca = new Equipo(1, "BOCA", "Sport entity.");
@@ -30,13 +26,16 @@ public class Main {
 
         //Creamos los partidos.
         ArrayList<Partido> partidos = new ArrayList<Partido>();
-        partidos.add(new Partido());
-        partidos.add(new Partido());
 
+        /*  A partir de la lectura de 'resultados.csv' le añadimos la informacion a cada partido
+            por eso usamos el constructor vacio, para despues, mediante la lectura usamos setters
+             para los atributos de cada partido.
+         */
         for (int i = 0; i < Files.readAllLines(Path.of(pathResultados)).size() - 1; i++) {
-            resultados.add(Files.readAllLines(Path.of(pathResultados)).get(i + 1).replaceAll(",", ""));
-            for (int j = 0; j < resultados.get(i).length(); j++) {
-                char c = resultados.get(i).charAt(j);
+            resultadosPartidos.add(Files.readAllLines(Path.of(pathResultados)).get(i + 1).replaceAll(",", ""));
+            partidos.add(new Partido());
+            for (int j = 0; j < resultadosPartidos.get(i).length(); j++) {
+                char c = resultadosPartidos.get(i).charAt(j);
                 switch (j) {
                     case 0 -> partidos.get(i).setEquipo1(findById(teams, Character.getNumericValue(c)));
                     case 1 -> partidos.get(i).setGolesEquipo1(Character.getNumericValue(c));
@@ -44,7 +43,34 @@ public class Main {
                     case 3 -> partidos.get(i).setEquipo2(findById(teams, Character.getNumericValue(c)));
                 }
             }
-            System.out.println(partidos.get(i).toString());
+        }
+
+        //Creamos array de pronosticos.
+        ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
+
+        //Leemos los pronosticos.
+        for (int i = 0; i < Files.readAllLines(Path.of(pathPronosticos)).size() - 1; i++) {
+            resultadosPronosticos.add(Files.readAllLines(Path.of(pathPronosticos)).get(i + 1));
+            pronosticos.add(new Pronostico(partidos.get(i)));
+            for (int j = 0; j < resultadosPronosticos.get(i).length(); j++) {
+                char c = resultadosPronosticos.get(i).charAt(j);
+                if (j == 0){
+                    pronosticos.get(i).setEquipo(findById(teams,Character.getNumericValue(c)));
+                }
+                if (c == 'X') {
+                    switch (j) {
+                        case 2 -> {
+                            pronosticos.get(i).setResultado(ResultadoEnum.Ganador);
+                        }
+                        case 3 -> {
+                            pronosticos.get(i).setResultado(ResultadoEnum.Empate);
+                        }
+                        case 4 -> {
+                            pronosticos.get(i).setResultado(ResultadoEnum.Perdedor);
+                        }
+                    }
+                }
+            }
         }
 
 
