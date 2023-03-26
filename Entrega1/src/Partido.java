@@ -59,7 +59,10 @@ public class Partido {
         }
         throw new EquipoNoEncontrado();
 
+    }
 
-        
+    @Override
+    public String toString() {
+        return "Partido: " + getEquipo1().getNombre()+"("+getGolesEquipo1()+")" + " vs " + getEquipo2().getNombre()+"("+getGolesEquipo2()+")";
     }
 }
