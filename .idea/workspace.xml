@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="34eb7d5d-3a2f-4ea2-a512-a9524b3e758d" name="Changes" comment="" />
+    <list default="true" id="fb055525-f941-436f-a8ad-694ccff700b5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2MkKVUz7jk6NZhgP1GsOyb357IF" />
+  <component name="ProjectId" id="2Mz80sa760UqQcfvy9aGGc5PmBw" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -22,17 +34,21 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/franc/OneDrive/Escritorio/TP_INTEGRADOR_ARGENTINAPROGRAMA"
+    "last_opened_file_path": "C:/Users/franc/OneDrive/Escritorio/TP_Integrador_ArgentinaPrograma/Entrega1",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="34eb7d5d-3a2f-4ea2-a512-a9524b3e758d" name="Changes" comment="" />
-      <created>1678306170139</created>
+      <changelist id="fb055525-f941-436f-a8ad-694ccff700b5" name="Changes" comment="" />
+      <created>1678758831104</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1678306170139</updated>
+      <updated>1678758831104</updated>
     </task>
     <servers />
   </component>
