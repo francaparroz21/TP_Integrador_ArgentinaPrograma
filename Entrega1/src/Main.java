@@ -54,20 +54,14 @@ public class Main {
             pronosticos.add(new Pronostico(partidos.get(i)));
             for (int j = 0; j < resultadosPronosticos.get(i).length(); j++) {
                 char c = resultadosPronosticos.get(i).charAt(j);
-                if (j == 0){
-                    pronosticos.get(i).setEquipo(findById(teams,Character.getNumericValue(c)));
+                if (j == 0) {
+                    pronosticos.get(i).setEquipo(findById(teams, Character.getNumericValue(c)));
                 }
                 if (c == 'X') {
                     switch (j) {
-                        case 2 -> {
-                            pronosticos.get(i).setResultado(ResultadoEnum.Ganador);
-                        }
-                        case 3 -> {
-                            pronosticos.get(i).setResultado(ResultadoEnum.Empate);
-                        }
-                        case 4 -> {
-                            pronosticos.get(i).setResultado(ResultadoEnum.Perdedor);
-                        }
+                        case 2 -> pronosticos.get(i).setResultado(ResultadoEnum.Ganador);
+                        case 3 -> pronosticos.get(i).setResultado(ResultadoEnum.Empate);
+                        case 4 -> pronosticos.get(i).setResultado(ResultadoEnum.Perdedor);
                     }
                 }
             }
