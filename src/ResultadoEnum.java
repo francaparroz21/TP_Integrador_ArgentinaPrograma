@@ -1,4 +1,1 @@
-public enum ResultadoEnum
-{
- Ganador, Perdedor, Empate
-}
+public enum ResultadoEnum {Ganador, Perdedor, Empate}

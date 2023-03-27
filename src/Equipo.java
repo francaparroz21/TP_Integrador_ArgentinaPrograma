@@ -13,9 +13,6 @@ public class Equipo {
         this.id = id;
     }
 
-    public Equipo() {
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -23,7 +20,6 @@ public class Equipo {
     public String getDescripcion() {
         return descripcion;
     }
-
 
     @Override
     public String toString() {

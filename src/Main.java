@@ -7,16 +7,16 @@ public class Main {
     public static void main(String[] args) throws IOException, TeamNotFound {
 
         //Path de los resultados, pronosticos y sus respectivos arrays.
-        String pathResultados = "C:\\Users\\PIL\\Desktop\\TP_Integrador_ArgentinaPrograma\\archivos\\resultados.csv";
+        String pathResultados = "C:\\Users\\franc\\OneDrive\\Escritorio\\TP_Integrador_ArgentinaPrograma\\archivos\\resultados.csv";
         ArrayList<String> resultadosPartidos = new ArrayList<String>();
-        String pathPronosticos = "C:\\Users\\PIL\\Desktop\\TP_Integrador_ArgentinaPrograma\\archivos\\pronosticos.csv";
+        String pathPronosticos = "C:\\Users\\franc\\OneDrive\\Escritorio\\TP_Integrador_ArgentinaPrograma\\archivos\\pronosticos.csv";
         ArrayList<String> resultadosPronosticos = new ArrayList<String>();
 
         //Creamos arraylist para cada equipo y en su metodo add le pasamos cada instancia.
-        ArrayList<Equipo> teams = new ArrayList<Equipo>();
-        teams.add(new Equipo(1, "BOCA", "Sport entity."));
-        teams.add(new Equipo(2, "RIVER", "Entity sport center."));
-        teams.add(new Equipo(3, "RACING", "The academy."));
+        ArrayList<Equipo> equipos = new ArrayList<Equipo>();
+        equipos.add(new Equipo(1, "BOCA", "Sport entity."));
+        equipos.add(new Equipo(2, "RIVER", "Entity sport center."));
+        equipos.add(new Equipo(3, "RACING", "The academy."));
 
         //Creamos los partidos.
         ArrayList<Partido> partidos = new ArrayList<Partido>();
@@ -36,19 +36,21 @@ public class Main {
             for (int j = 0; j < resultadosPartidos.get(i).length(); j++) {
                 char c = resultadosPartidos.get(i).charAt(j);
                 switch (j) {
-                    case 0 -> partidos.get(i).setEquipo1(findById(teams, Character.getNumericValue(c)));
+                    case 0 -> partidos.get(i).setEquipo1(findById(equipos, Character.getNumericValue(c)));
                     case 1 -> partidos.get(i).setGolesEquipo1(Character.getNumericValue(c));
                     case 2 -> partidos.get(i).setGolesEquipo2(Character.getNumericValue(c));
-                    case 3 -> partidos.get(i).setEquipo2(findById(teams, Character.getNumericValue(c)));
+                    case 3 -> partidos.get(i).setEquipo2(findById(equipos, Character.getNumericValue(c)));
                 }
             }
-            System.out.println(partidos.get(i).toString());
         }
-
 
         //Creamos array de pronosticos.
         ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
         int countPoints = 0;
+
+        //Seteamos la primer ronda, con sus repectivos partidos y lo printeamos.
+        ronda1.setPartidos(partidos.toArray(new Partido[0]));
+        System.out.println(ronda1.toString() + "\n " + "=".repeat(50));
 
         //Leemos los pronosticos.
         for (int i = 0; i < Files.readAllLines(Path.of(pathPronosticos)).size() - 1; i++) {
@@ -56,7 +58,7 @@ public class Main {
             pronosticos.add(new Pronostico(partidos.get(i)));
             for (int j = 0; j < resultadosPronosticos.get(i).length(); j++) {
                 char c = resultadosPronosticos.get(i).charAt(j);
-                if (j == 0) pronosticos.get(i).setEquipo(findById(teams, Character.getNumericValue(c)));
+                if (j == 0) pronosticos.get(i).setEquipo(findById(equipos, Character.getNumericValue(c)));
                 if (c == 'X') {
                     switch (j) {
                         case 2 -> pronosticos.get(i).setResultado(ResultadoEnum.Ganador);
@@ -65,16 +67,22 @@ public class Main {
                     }
                 }
             }
+            //Printeamos cada pronostico dentro del primer for.
             System.out.println(pronosticos.get(i).toString());
-            if (pronosticos.get(i).puntos() == 1) countPoints++;
+            //Sumamos punto, ya sea 0 o 1.
+            countPoints += pronosticos.get(i).puntos();
         }
-        ronda1.setPartidos(partidos.toArray(new Partido[partidos.size()]));
-        System.out.println(ronda1.toString());
-        System.out.println("*".repeat(50) + "\nEl jugador obtuvo: " + countPoints + " puntos.\n" + "*".repeat(50));
-
+        System.out.println("*".repeat(50) + "\n" +
+                "El jugador obtuvo: (" + countPoints + ") / " + ronda1.puntos() + " puntos.\n" +
+                "*".repeat(50));
     }
 
 
+    /*
+    FindById: toma como argumento un arraylist y un id como entero, si encuentra el equipo con su id
+    lo devuelve en forma de Objeto(Equipo).
+    Sino, arroja una exception, que no se encontro ningun equipo en el arraylist.
+     */
     public static Equipo findById(ArrayList<Equipo> teams, int id) throws TeamNotFound {
         for (Equipo equipo : teams) if (id == equipo.getId()) return equipo;
         throw new TeamNotFound();
