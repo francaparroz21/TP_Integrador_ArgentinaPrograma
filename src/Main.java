@@ -29,7 +29,6 @@ public class Main {
              cambiar los atributos de cada partido.
          */
 
-
         for (int i = 0; i < Files.readAllLines(Path.of(pathResultados)).size() - 1; i++) {
             resultadosPartidos.add(Files.readAllLines(Path.of(pathResultados)).get(i + 1).replaceAll(",", ""));
             partidos.add(new Partido());
