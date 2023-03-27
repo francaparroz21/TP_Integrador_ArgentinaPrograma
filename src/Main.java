@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws IOException, TeamNotFound {
 
-
         //Path de los resultados, pronosticos y sus respectivos arrays.
         String pathResultados = "C:\\Users\\PIL\\Desktop\\TP_Integrador_ArgentinaPrograma\\archivos\\resultados.csv";
         ArrayList<String> resultadosPartidos = new ArrayList<String>();
@@ -21,6 +20,9 @@ public class Main {
 
         //Creamos los partidos.
         ArrayList<Partido> partidos = new ArrayList<Partido>();
+        //Creamos ronda 1.
+        Ronda ronda1 = new Ronda("Uno");
+
 
         /*  A partir de la lectura de 'resultados.csv' le añadimos la informacion a cada partido
             por eso usamos el constructor vacio, para despues, mediante la lectura usando los setters
@@ -40,9 +42,9 @@ public class Main {
                     case 3 -> partidos.get(i).setEquipo2(findById(teams, Character.getNumericValue(c)));
                 }
             }
-            //System.out.println(partidos.get(i).toString());
+            System.out.println(partidos.get(i).toString());
         }
-        //System.out.println("=".repeat(50));
+
 
         //Creamos array de pronosticos.
         ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
@@ -63,10 +65,13 @@ public class Main {
                     }
                 }
             }
-            //System.out.println(pronosticos.get(i).toString());
+            System.out.println(pronosticos.get(i).toString());
             if (pronosticos.get(i).puntos() == 1) countPoints++;
         }
+        ronda1.setPartidos(partidos.toArray(new Partido[partidos.size()]));
+        System.out.println(ronda1.toString());
         System.out.println("*".repeat(50) + "\nEl jugador obtuvo: " + countPoints + " puntos.\n" + "*".repeat(50));
+
     }
 
 
