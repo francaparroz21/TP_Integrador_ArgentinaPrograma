@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb055525-f941-436f-a8ad-694ccff700b5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_INTEGRADOR_ARGENTINAPROGRAMA/Equipo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_INTEGRADOR_ARGENTINAPROGRAMA/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_INTEGRADOR_ARGENTINAPROGRAMA/Partido.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_INTEGRADOR_ARGENTINAPROGRAMA/Pronostico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_INTEGRADOR_ARGENTINAPROGRAMA/ResultadoEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_INTEGRADOR_ARGENTINAPROGRAMA/Ronda.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TP_INTEGRADOR_ARGENTINAPROGRAMA/TeamNotFound.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,17 +39,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/franc/OneDrive/Escritorio/TP_Integrador_ArgentinaPrograma",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/franc/OneDrive/Escritorio/asddddcccc&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="TP_Integrador_ArgentinaPrograma" />
