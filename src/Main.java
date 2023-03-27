@@ -13,16 +13,11 @@ public class Main {
         String pathPronosticos = "C:\\Users\\PIL\\Desktop\\TP_Integrador_ArgentinaPrograma\\archivos\\pronosticos.csv";
         ArrayList<String> resultadosPronosticos = new ArrayList<String>();
 
-        //Creamos cada equipor que van a jugar los partidos.
-        Equipo boca = new Equipo(1, "BOCA", "Sport entity.");
-        Equipo river = new Equipo(2, "RIVER", "Entity sport center.");
-        Equipo racing = new Equipo(3, "RACING", "The academy.");
-
-        //Creamos arraylist para cada equipo.
+        //Creamos arraylist para cada equipo y en su metodo add le pasamos cada instancia.
         ArrayList<Equipo> teams = new ArrayList<Equipo>();
-        teams.add(boca);
-        teams.add(river);
-        teams.add(racing);
+        teams.add(new Equipo(1, "BOCA", "Sport entity."));
+        teams.add(new Equipo(2, "RIVER", "Entity sport center."));
+        teams.add(new Equipo(3, "RACING", "The academy."));
 
         //Creamos los partidos.
         ArrayList<Partido> partidos = new ArrayList<Partido>();
@@ -31,6 +26,7 @@ public class Main {
             por eso usamos el constructor vacio, para despues, mediante la lectura usando los setters
              cambiar los atributos de cada partido.
          */
+
 
         for (int i = 0; i < Files.readAllLines(Path.of(pathResultados)).size() - 1; i++) {
             resultadosPartidos.add(Files.readAllLines(Path.of(pathResultados)).get(i + 1).replaceAll(",", ""));
@@ -58,9 +54,7 @@ public class Main {
             pronosticos.add(new Pronostico(partidos.get(i)));
             for (int j = 0; j < resultadosPronosticos.get(i).length(); j++) {
                 char c = resultadosPronosticos.get(i).charAt(j);
-                if (j == 0) {
-                    pronosticos.get(i).setEquipo(findById(teams, Character.getNumericValue(c)));
-                }
+                if (j == 0) pronosticos.get(i).setEquipo(findById(teams, Character.getNumericValue(c)));
                 if (c == 'X') {
                     switch (j) {
                         case 2 -> pronosticos.get(i).setResultado(ResultadoEnum.Ganador);
@@ -72,16 +66,12 @@ public class Main {
             //System.out.println(pronosticos.get(i).toString());
             if (pronosticos.get(i).puntos() == 1) countPoints++;
         }
-        System.out.println("*".repeat(50)+"\nEl jugador obtuvo: " + countPoints + " puntos.\n" + "*".repeat(50));
+        System.out.println("*".repeat(50) + "\nEl jugador obtuvo: " + countPoints + " puntos.\n" + "*".repeat(50));
     }
 
 
     public static Equipo findById(ArrayList<Equipo> teams, int id) throws TeamNotFound {
-        for (Equipo equipo : teams) {
-            if (id == equipo.getId()) {
-                return equipo;
-            }
-        }
+        for (Equipo equipo : teams) if (id == equipo.getId()) return equipo;
         throw new TeamNotFound();
     }
 

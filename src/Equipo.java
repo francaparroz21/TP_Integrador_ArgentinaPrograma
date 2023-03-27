@@ -7,10 +7,6 @@ public class Equipo {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Equipo(int id, String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
