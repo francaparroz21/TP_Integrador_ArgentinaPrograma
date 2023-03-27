@@ -23,7 +23,6 @@ public class Main {
         //Creamos ronda 1.
         Ronda ronda1 = new Ronda("Uno");
 
-
         /*  A partir de la lectura de 'resultados.csv' le añadimos la informacion a cada partido
             por eso usamos el constructor vacio, para despues, mediante la lectura usando los setters
              cambiar los atributos de cada partido.
