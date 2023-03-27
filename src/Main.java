@@ -25,9 +25,7 @@ public class Main {
 
         /*  A partir de la lectura de 'resultados.csv' le añadimos la informacion a cada partido
             por eso usamos el constructor vacio, para despues, mediante la lectura usando los setters
-             cambiar los atributos de cada partido.
-         */
-
+             cambiar los atributos de cada partido.*/
 
         for (int i = 0; i < Files.readAllLines(Path.of(pathResultados)).size() - 1; i++) {
             resultadosPartidos.add(Files.readAllLines(Path.of(pathResultados)).get(i + 1).replaceAll(",", ""));
