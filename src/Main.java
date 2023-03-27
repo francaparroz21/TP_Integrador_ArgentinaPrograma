@@ -23,7 +23,6 @@ public class Main {
         //Creamos ronda 1.
         Ronda ronda1 = new Ronda("Uno");
 
-
         /*  A partir de la lectura de 'resultados.csv' le añadimos la informacion a cada partido
             por eso usamos el constructor vacio, para despues, mediante la lectura usando los setters
              cambiar los atributos de cada partido.
@@ -71,6 +70,8 @@ public class Main {
             //Sumamos punto, ya sea 0 o 1.
             countPoints += pronosticos.get(i).puntos();
         }
+
+        //Printeamos final de ronda con sus respectivos puntos.
         System.out.println("*".repeat(50) + "\n" +
                 "El jugador obtuvo: (" + countPoints + ") / " + ronda1.puntos() + " puntos.\n" +
                 "*".repeat(50));
