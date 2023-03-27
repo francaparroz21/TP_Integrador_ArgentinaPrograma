@@ -10,10 +10,6 @@ public class Ronda {
         return nro;
     }
 
-    public void setNro(String nro) {
-        this.nro = nro;
-    }
-
     public Partido[] getPartidos() {
         return partidos;
     }
