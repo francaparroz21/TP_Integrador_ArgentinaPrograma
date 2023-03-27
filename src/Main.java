@@ -72,6 +72,8 @@ public class Main {
             //Sumamos punto, ya sea 0 o 1.
             countPoints += pronosticos.get(i).puntos();
         }
+
+        //Printeamos final de ronda con sus respectivos puntos.
         System.out.println("*".repeat(50) + "\n" +
                 "El jugador obtuvo: (" + countPoints + ") / " + ronda1.puntos() + " puntos.\n" +
                 "*".repeat(50));
