@@ -7,6 +7,21 @@ public class Equipo {
         return id;
     }
 
+    public Equipo() {
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Equipo(int id, String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
