@@ -4,12 +4,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 public class Main {
+    public static char[] numbers = {'1','2','3','4','5','6','7','8','9'};
     public static void main(String[] args) throws IOException, TeamNotFound {
 
-        ArrayList<String> resultadosPartidos = getFile("./src/archivos/resultados.csv");
-        ArrayList<String> resultadosPronosticos = getFile("./src/archivos/pronosticos.csv");
+
+        List<String> resultadosPartidos = getFile("./src/archivos/resultados.csv");
+        List<String> resultadosPronosticos = getFile("./src/archivos/pronosticos.csv");
+        System.out.println(resultadosPartidos);
 
         ArrayList<Equipo> equipos = new ArrayList<>();
         equipos.add(new Equipo(1, "Boca", "Club"));
@@ -18,16 +24,7 @@ public class Main {
 
         ArrayList<Partido> partidos = new ArrayList<Partido>();
 
-        for (int i = 0; i < resultadosPartidos.size() - 1; i++) {
 
-            for (int j = 0; j < resultadosPartidos.get(i + 1).length(); j++) {
-                switch (j) {
-                    case 0:
-                        equipos.get(i)
-                        break;
-                }
-            }
-        }
 
 
     }
@@ -46,13 +43,11 @@ public class Main {
     /*Metodo para obtener el archivo y devolverlo en un arraylist.
         Si no lo encuentra arroja una exception.
      */
-    public static ArrayList<String> getFile(String filename) throws IOException {
+    public static List<String> getFile(String filename) throws IOException {
         Path path = Paths.get(filename);
-        try {
-            return (ArrayList<String>) Files.readAllLines(path, StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            throw new IOException();
-        }
+        List<String> file = Files.readAllLines(path, StandardCharsets.UTF_8);
+        file.remove(0);
+        return file;
     }
 
 }
