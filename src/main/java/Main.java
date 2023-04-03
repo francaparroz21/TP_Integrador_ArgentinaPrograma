@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Main {
-    public static char[] numbers = {'1','2','3','4','5','6','7','8','9'};
-    public static void main(String[] args) throws IOException, TeamNotFound {
+    public static char[] numbers = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
+    public static void main(String[] args) throws IOException, TeamNotFound {
 
         List<String> resultadosPartidos = getFile("./src/archivos/resultados.csv");
         List<String> resultadosPronosticos = getFile("./src/archivos/pronosticos.csv");
@@ -23,8 +23,20 @@ public class Main {
         equipos.add(new Equipo(3, "Racing", "Club"));
 
         ArrayList<Partido> partidos = new ArrayList<Partido>();
+        HashMap<Integer, Ronda> rondas = new HashMap<>();
 
+        //recorremos los partidos.
+        for (String line : resultadosPartidos) {
+            partidos.add(new Partido());
+            //Recorremos cada linea
+            for (int i = 0; i < line.length(); i++) {
+                switch (i){
+                    case 0:
 
+                        break;
+                }
+            }
+        }
 
 
     }
@@ -43,10 +55,12 @@ public class Main {
     /*Metodo para obtener el archivo y devolverlo en un arraylist.
         Si no lo encuentra arroja una exception.
      */
-    public static List<String> getFile(String filename) throws IOException {
+    public static ArrayList<String> getFile(String filename) throws IOException {
         Path path = Paths.get(filename);
-        List<String> file = Files.readAllLines(path, StandardCharsets.UTF_8);
-        file.remove(0);
+        ArrayList<String> file = (ArrayList<String>) Files.readAllLines(path, StandardCharsets.UTF_8);
+        for (int i = 0; i < Files.readAllLines(path, StandardCharsets.UTF_8).size()-1; i++) {
+            file.get(i).replaceAll(",","");
+        }
         return file;
     }
 
