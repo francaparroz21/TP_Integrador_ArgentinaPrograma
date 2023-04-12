@@ -23,30 +23,30 @@ public class Main {
 
         ArrayList<Ronda> rondas = new ArrayList<>();
 
-        for (String resultadoRonda : resultadoRondas) {
-            if (!findRound(resultadoRonda.charAt(0), rondas)) {
-                rondas.add(new Ronda(String.valueOf(resultadoRonda.charAt(0))));
+        for (int i = 0; i < resultadoRondas.size(); i++) {
+            if (!findRound(resultadoRondas.get(i).charAt(0), rondas)) {
+                rondas.add(new Ronda(String.valueOf(resultadoRondas.get(i).charAt(0))));
             }
             Partido p = new Partido();
-            for (int j = 0; j < resultadoRonda.length(); j++) {
-                char c = resultadoRonda.charAt(j);
+            for (int j = 0; j < resultadoRondas.get(i).length(); j++) {
+                char c = resultadoRondas.get(i).charAt(j);
                 switch (j) {
                     case 2 -> p.setEquipo1(findById(equipos, Character.getNumericValue(c)));
                     case 4 -> p.setGolesEquipo1(Character.getNumericValue(c));
                     case 6 -> p.setGolesEquipo2(Character.getNumericValue(c));
                     case 8 -> p.setEquipo2(findById(equipos, Character.getNumericValue(c)));
                 }
-                System.out.println(p);
             }
-            /*
-            if (rondas.get(i).getPartidos() != null) rondas.get(i).setPartidos(new Partido[]{p});
-            else{
-                ArrayList<Partido> partidos = new ArrayList<Partido>(Arrays.asList(rondas.get(i).getPartidos()));
+            if (rondas.get(Character.getNumericValue(resultadoRondas.get(i).charAt(0)) - 1).getPartidos() == null)
+                rondas.get(Character.getNumericValue(resultadoRondas.get(i).charAt(0)) - 1).setPartidos(new Partido[]{p});
+            else {
+                ArrayList<Partido> partidos = new ArrayList<Partido>(Arrays.asList(rondas.get(Character.getNumericValue(resultadoRondas.get(i).charAt(0)) - 1).getPartidos()));
                 partidos.add(p);
-                rondas.get(i).setPartidos((Partido[]) partidos.toArray());
+                rondas.get(Character.getNumericValue(resultadoRondas.get(i).charAt(0)) - 1).setPartidos(partidos.toArray(new Partido[0]));
             }
-             */
         }
+
+        rondas.forEach(System.out::println);
     }
 
     public static boolean findRound(char c, ArrayList<Ronda> rounds) {
