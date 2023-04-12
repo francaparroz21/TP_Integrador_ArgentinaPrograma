@@ -3,10 +3,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 //comentario por si las dudas
 
@@ -15,32 +12,46 @@ public class Main {
 
     public static void main(String[] args) throws IOException, TeamNotFound {
 
-        List<String> resultadosPartidos = getFile("./src/archivos/resultados.csv");
+        List<String> resultadoRondas = getFile("./src/archivos/resultados.csv");
         List<String> resultadosPronosticos = getFile("./src/archivos/pronosticos.csv");
-        System.out.println(resultadosPartidos);
+
 
         ArrayList<Equipo> equipos = new ArrayList<>();
         equipos.add(new Equipo(1, "Boca", "Club"));
         equipos.add(new Equipo(2, "River", "Club"));
         equipos.add(new Equipo(3, "Racing", "Club"));
 
-        ArrayList<Partido> partidos = new ArrayList<Partido>();
-        HashMap<Integer, Ronda> rondas = new HashMap<>();
+        ArrayList<Ronda> rondas = new ArrayList<>();
 
-        //recorremos los partidos.
-        for (String line : resultadosPartidos) {
-            partidos.add(new Partido());
-            //Recorremos cada linea
-            for (int i = 0; i < line.length(); i++) {
-                switch (i){
-                    case 0:
-
-                        break;
-                }
+        for (String resultadoRonda : resultadoRondas) {
+            if (!findRound(resultadoRonda.charAt(0), rondas)) {
+                rondas.add(new Ronda(String.valueOf(resultadoRonda.charAt(0))));
             }
+            Partido p = new Partido();
+            for (int j = 0; j < resultadoRonda.length(); j++) {
+                char c = resultadoRonda.charAt(j);
+                switch (j) {
+                    case 2 -> p.setEquipo1(findById(equipos, Character.getNumericValue(c)));
+                    case 4 -> p.setGolesEquipo1(Character.getNumericValue(c));
+                    case 6 -> p.setGolesEquipo2(Character.getNumericValue(c));
+                    case 8 -> p.setEquipo2(findById(equipos, Character.getNumericValue(c)));
+                }
+                System.out.println(p);
+            }
+            /*
+            if (rondas.get(i).getPartidos() != null) rondas.get(i).setPartidos(new Partido[]{p});
+            else{
+                ArrayList<Partido> partidos = new ArrayList<Partido>(Arrays.asList(rondas.get(i).getPartidos()));
+                partidos.add(p);
+                rondas.get(i).setPartidos((Partido[]) partidos.toArray());
+            }
+             */
         }
+    }
 
-
+    public static boolean findRound(char c, ArrayList<Ronda> rounds) {
+        for (Ronda r : rounds) if (r.getNro().equals(String.valueOf(c))) return true;
+        return false;
     }
 
 
@@ -57,12 +68,10 @@ public class Main {
     /*Metodo para obtener el archivo y devolverlo en un arraylist.
         Si no lo encuentra arroja una exception.
      */
-    public static ArrayList<String> getFile(String filename) throws IOException {
+    public static List<String> getFile(String filename) throws IOException {
         Path path = Paths.get(filename);
-        ArrayList<String> file = (ArrayList<String>) Files.readAllLines(path, StandardCharsets.UTF_8);
-        for (int i = 0; i < Files.readAllLines(path, StandardCharsets.UTF_8).size()-1; i++) {
-            file.get(i).replaceAll(",","");
-        }
+        List<String> file = (ArrayList<String>) Files.readAllLines(path, StandardCharsets.UTF_8);
+        file.remove(0);
         return file;
     }
 
