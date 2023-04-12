@@ -8,7 +8,6 @@ import java.util.*;
 //comentario por si las dudas
 
 public class Main {
-    public static char[] numbers = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
     public static void main(String[] args) throws IOException, TeamNotFound {
 
@@ -21,34 +20,53 @@ public class Main {
         equipos.add(new Equipo(2, "River", "Club"));
         equipos.add(new Equipo(3, "Racing", "Club"));
 
-        ArrayList<Ronda> rondas = new ArrayList<>();
 
-        for (int i = 0; i < resultadoRondas.size(); i++) {
-            if (!findRound(resultadoRondas.get(i).charAt(0), rondas)) {
-                rondas.add(new Ronda(String.valueOf(resultadoRondas.get(i).charAt(0))));
-            }
-            Partido p = new Partido();
-            for (int j = 0; j < resultadoRondas.get(i).length(); j++) {
-                char c = resultadoRondas.get(i).charAt(j);
-                switch (j) {
-                    case 2 -> p.setEquipo1(findById(equipos, Character.getNumericValue(c)));
-                    case 4 -> p.setGolesEquipo1(Character.getNumericValue(c));
-                    case 6 -> p.setGolesEquipo2(Character.getNumericValue(c));
-                    case 8 -> p.setEquipo2(findById(equipos, Character.getNumericValue(c)));
-                }
-            }
-            char numRound = resultadoRondas.get(i).charAt(0);
-            if (Objects.requireNonNull(findRoundByNum(numRound, rondas)).getPartidos() == null)
-                rondas.get(rondas.indexOf(findRoundByNum(numRound,rondas))).setPartidos(new Partido[]{p});
-            else {
-                ArrayList<Partido> partidos = new ArrayList<>();
-                Collections.addAll(partidos,Objects.requireNonNull(findRoundByNum(numRound, rondas)).getPartidos());
-                partidos.add(p);
-                rondas.get(rondas.indexOf(findRoundByNum(numRound,rondas))).setPartidos(partidos.toArray(new Partido[0]));
-            }
-        }
+        List<Ronda> rondas = leerRondas(resultadoRondas, equipos);
 
         rondas.forEach(System.out::println);
+    }
+
+    public static ArrayList<Ronda> leerRondas(List<String> resultadoRondas, ArrayList<Equipo> equipos) {
+        ArrayList<Ronda> rondas = new ArrayList<>();
+        try {
+            for (int i = 0; i < resultadoRondas.size(); i++) {
+                if (!findRound(resultadoRondas.get(i).charAt(0), rondas)) {
+                    rondas.add(new Ronda(String.valueOf(resultadoRondas.get(i).charAt(0))));
+                }
+                Partido p = new Partido();
+                for (int j = 0; j < resultadoRondas.get(i).length(); j++) {
+                    char c = resultadoRondas.get(i).charAt(j);
+                    switch (j) {
+                        case 2 -> p.setEquipo1(findById(equipos, Character.getNumericValue(c)));
+                        case 4 -> p.setGolesEquipo1(Character.getNumericValue(c));
+                        case 6 -> p.setGolesEquipo2(Character.getNumericValue(c));
+                        case 8 -> p.setEquipo2(findById(equipos, Character.getNumericValue(c)));
+                    }
+                }
+                char numRound = resultadoRondas.get(i).charAt(0);
+                if (Objects.requireNonNull(findRoundByNum(numRound, rondas)).getPartidos() == null)
+                    rondas.get(rondas.indexOf(findRoundByNum(numRound, rondas))).setPartidos(new Partido[]{p});
+                else {
+                    ArrayList<Partido> partidos = new ArrayList<>();
+                    Collections.addAll(partidos, Objects.requireNonNull(findRoundByNum(numRound, rondas)).getPartidos());
+                    partidos.add(p);
+                    rondas.get(rondas.indexOf(findRoundByNum(numRound, rondas))).setPartidos(partidos.toArray(new Partido[0]));
+                }
+            }
+            sortRound(rondas);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rondas;
+    }
+
+    public static ArrayList<Ronda> sortRound(ArrayList<Ronda> rounds) {
+        Collections.sort(rounds, new Comparator<Ronda>() {
+            public int compare(Ronda r1, Ronda r2) {
+                return r1.getNro().compareTo(r2.getNro());
+            }
+        });
+        return rounds;
     }
 
     public static boolean findRound(char c, ArrayList<Ronda> rounds) {
@@ -58,7 +76,7 @@ public class Main {
 
     public static Ronda findRoundByNum(char num, ArrayList<Ronda> rounds) {
         for (Ronda r : rounds) {
-            if (r.getNro().equals(String.valueOf(num)))return r;
+            if (r.getNro().equals(String.valueOf(num))) return r;
         }
         return null;
     }
