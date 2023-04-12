@@ -37,12 +37,14 @@ public class Main {
                     case 8 -> p.setEquipo2(findById(equipos, Character.getNumericValue(c)));
                 }
             }
-            if (rondas.get(Character.getNumericValue(resultadoRondas.get(i).charAt(0)) - 1).getPartidos() == null)
-                rondas.get(Character.getNumericValue(resultadoRondas.get(i).charAt(0)) - 1).setPartidos(new Partido[]{p});
+            char numRound = resultadoRondas.get(i).charAt(0);
+            if (Objects.requireNonNull(findRoundByNum(numRound, rondas)).getPartidos() == null)
+                rondas.get(rondas.indexOf(findRoundByNum(numRound,rondas))).setPartidos(new Partido[]{p});
             else {
-                ArrayList<Partido> partidos = new ArrayList<Partido>(Arrays.asList(rondas.get(Character.getNumericValue(resultadoRondas.get(i).charAt(0)) - 1).getPartidos()));
+                ArrayList<Partido> partidos = new ArrayList<>();
+                Collections.addAll(partidos,Objects.requireNonNull(findRoundByNum(numRound, rondas)).getPartidos());
                 partidos.add(p);
-                rondas.get(Character.getNumericValue(resultadoRondas.get(i).charAt(0)) - 1).setPartidos(partidos.toArray(new Partido[0]));
+                rondas.get(rondas.indexOf(findRoundByNum(numRound,rondas))).setPartidos(partidos.toArray(new Partido[0]));
             }
         }
 
@@ -52,6 +54,13 @@ public class Main {
     public static boolean findRound(char c, ArrayList<Ronda> rounds) {
         for (Ronda r : rounds) if (r.getNro().equals(String.valueOf(c))) return true;
         return false;
+    }
+
+    public static Ronda findRoundByNum(char num, ArrayList<Ronda> rounds) {
+        for (Ronda r : rounds) {
+            if (r.getNro().equals(String.valueOf(num)))return r;
+        }
+        return null;
     }
 
 
