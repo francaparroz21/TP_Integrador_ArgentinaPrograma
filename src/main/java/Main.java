@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, TeamNotFound {
 
-        List<String> resultadoRondas = getFile("./src/archivos/resultados.csv");
+        List<String> resultadoRondas = getFile("./src/archivos/rondas.csv");
         List<String> resultadosPronosticos = getFile("./src/archivos/pronosticos.csv");
 
 
