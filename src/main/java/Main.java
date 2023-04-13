@@ -24,10 +24,22 @@ public class Main {
         List<Ronda> rondas = leerRondas(resultadoRondas, equipos);
         Map<String, ArrayList<Pronostico>> pronosticos = leerPronosticos(resultadosPronosticos, equipos, rondas);
 
-        pronosticos.forEach((nom, pronosticosArray) -> {
-            System.out.println(nom + " realizo estos pronosticos: \n" + pronosticosArray);
-        });
+        getPuntos(pronosticos);
 
+    }
+
+    private static void getPuntos(Map<String, ArrayList<Pronostico>> pronosticos){
+        pronosticos.forEach((nom, pronosticosArray) -> {
+            int puntos = 0;
+            for (Pronostico p:pronosticosArray) {
+                try {
+                    puntos+=p.puntos();
+                } catch (TeamNotFound e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            System.out.println(nom +puntos);
+        });
     }
 
     public static Map<String, ArrayList<Pronostico>> leerPronosticos(List<String> resultadosPronosticos, ArrayList<Equipo> equipos, List<Ronda> rondas) {
@@ -53,14 +65,13 @@ public class Main {
                     }
                 }
                 ArrayList<Pronostico> pronosticoArray;
-                if(!pronosticos.containsKey(nombre)){
+                if (!pronosticos.containsKey(nombre)) {
                     pronosticoArray = new ArrayList<>();
-                }
-                else{
+                } else {
                     pronosticoArray = pronosticos.get(nombre);
                 }
                 pronosticoArray.add(pronostico);
-                pronosticos.put(nombre,pronosticoArray);
+                pronosticos.put(nombre, pronosticoArray);
             }
         } catch (Exception e) {
             e.printStackTrace();
