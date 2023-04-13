@@ -1,4 +1,4 @@
-Nombre,Equipo1 - id,Ganador,Empate,Perdedor,Equipo2 - id
-Eros,2,,,X,1
-Fran,3,,X,,1
-Charly,1,X,,,3
+Nombre,Apuesta a,Ganador,Empate,Perdedor,Partido(IDS)
+Eros,2,,,X,2-1
+Fran,3,,X,,3-2
+Charly,1,X,,,1-3

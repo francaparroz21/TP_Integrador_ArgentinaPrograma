@@ -7,6 +7,15 @@ public class Pronostico {
         this.partido = partido;
     }
 
+    public Pronostico() {
+    }
+
+    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado) {
+        this.partido = partido;
+        this.equipo = equipo;
+        this.resultado = resultado;
+    }
+
     public Partido getPartido() {
         return partido;
     }
