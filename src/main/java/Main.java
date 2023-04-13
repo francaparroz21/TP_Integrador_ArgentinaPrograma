@@ -26,7 +26,7 @@ public class Main {
 
     }
 
-    private static Map<String, ArrayList<Pronostico>> leerPronosticos(List<String> resultadosPronosticos, ArrayList<Equipo> equipos, List<Ronda> rondas) {
+    public static Map<String, ArrayList<Pronostico>> leerPronosticos(List<String> resultadosPronosticos, ArrayList<Equipo> equipos, List<Ronda> rondas) {
         Map<String, ArrayList<Pronostico>> pronosticos = new HashMap<>();
         try {
             for (String line : resultadosPronosticos) {
@@ -48,9 +48,16 @@ public class Main {
                         case 6 -> pronostico.setPartido(buscarPartido(rondas, line.split(",")[5]));
                     }
                 }
-                System.out.println(nombre + " apuesta a " + pronostico.getEquipo().getNombre() + "\n" + pronostico.getPartido());
+                ArrayList<Pronostico> pronosticoArray;
+                if(!pronosticos.containsKey(nombre)){
+                    pronosticoArray = new ArrayList<>();
+                }
+                else{
+                    pronosticoArray = pronosticos.get(nombre);
+                }
+                pronosticoArray.add(pronostico);
+                pronosticos.put(nombre,pronosticoArray);
             }
-            return new HashMap<>();
         } catch (Exception e) {
             e.printStackTrace();
         }
