@@ -22,20 +22,33 @@ public class Main {
 
 
         List<Ronda> rondas = leerRondas(resultadoRondas, equipos);
+        Map<String,ArrayList<Pronostico>> pronosticos = leerPronosticos(resultadosPronosticos,equipos);
 
         rondas.forEach(System.out::println);
+    }
+
+    private static Map<String, ArrayList<Pronostico>> leerPronosticos(List<String> resultadosPronosticos, ArrayList<Equipo> equipos) {
+        Map<String,ArrayList<Pronostico>> pronosticos = new HashMap<>();
+        for (String line:resultadosPronosticos) {
+            String nombre = line.split(",")[0];
+            for (int i = 0; i < line.length(); i++) {
+
+            }
+            System.out.println(nombre);
+        }
+        return new HashMap<>();
     }
 
     public static ArrayList<Ronda> leerRondas(List<String> resultadoRondas, ArrayList<Equipo> equipos) {
         ArrayList<Ronda> rondas = new ArrayList<>();
         try {
-            for (int i = 0; i < resultadoRondas.size(); i++) {
-                if (!findRound(resultadoRondas.get(i).charAt(0), rondas)) {
-                    rondas.add(new Ronda(String.valueOf(resultadoRondas.get(i).charAt(0))));
+            for (String resultadoRonda : resultadoRondas) {
+                if (!findRound(resultadoRonda.charAt(0), rondas)) {
+                    rondas.add(new Ronda(String.valueOf(resultadoRonda.charAt(0))));
                 }
                 Partido p = new Partido();
-                for (int j = 0; j < resultadoRondas.get(i).length(); j++) {
-                    char c = resultadoRondas.get(i).charAt(j);
+                for (int j = 0; j < resultadoRonda.length(); j++) {
+                    char c = resultadoRonda.charAt(j);
                     switch (j) {
                         case 2 -> p.setEquipo1(findById(equipos, Character.getNumericValue(c)));
                         case 4 -> p.setGolesEquipo1(Character.getNumericValue(c));
@@ -43,7 +56,7 @@ public class Main {
                         case 8 -> p.setEquipo2(findById(equipos, Character.getNumericValue(c)));
                     }
                 }
-                char numRound = resultadoRondas.get(i).charAt(0);
+                char numRound = resultadoRonda.charAt(0);
                 if (Objects.requireNonNull(findRoundByNum(numRound, rondas)).getPartidos() == null)
                     rondas.get(rondas.indexOf(findRoundByNum(numRound, rondas))).setPartidos(new Partido[]{p});
                 else {
