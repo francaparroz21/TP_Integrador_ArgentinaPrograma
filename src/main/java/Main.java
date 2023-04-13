@@ -24,6 +24,10 @@ public class Main {
         List<Ronda> rondas = leerRondas(resultadoRondas, equipos);
         Map<String, ArrayList<Pronostico>> pronosticos = leerPronosticos(resultadosPronosticos, equipos, rondas);
 
+        pronosticos.forEach((nom, pronosticosArray) -> {
+            System.out.println(nom + " realizo estos pronosticos: \n" + pronosticosArray);
+        });
+
     }
 
     public static Map<String, ArrayList<Pronostico>> leerPronosticos(List<String> resultadosPronosticos, ArrayList<Equipo> equipos, List<Ronda> rondas) {

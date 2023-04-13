@@ -47,6 +47,7 @@ public class Pronostico {
 
     @Override
     public String toString() {
-        return "Apuesta: " + getEquipo().getNombre() + " - " + getResultado();
+        return "Apuesta: " + getEquipo().getNombre() + " - " + getResultado() + "\n" +
+                getPartido();
     }
 }
