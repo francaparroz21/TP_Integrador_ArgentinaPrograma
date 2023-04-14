@@ -10,6 +10,11 @@ public class Ronda {
         return nro;
     }
 
+    public Ronda(String nro, Partido[] partidos) {
+        this.nro = nro;
+        this.partidos = partidos;
+    }
+
     public Partido[] getPartidos() {
         return partidos;
     }
