@@ -1,6 +1,16 @@
 public class Pronostico {
     private Partido partido;
+    private String nroRonda;
     private Equipo equipo;
+
+    public String getNroRonda() {
+        return nroRonda;
+    }
+
+    public void setNroRonda(String nroRonda) {
+        this.nroRonda = nroRonda;
+    }
+
     private ResultadoEnum resultado;
 
     public Pronostico(Partido partido) {

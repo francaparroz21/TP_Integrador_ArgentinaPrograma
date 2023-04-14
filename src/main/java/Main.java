@@ -27,21 +27,20 @@ public class Main {
         System.out.println(getPuntos(pronosticos));
 
 
-
     }
 
-    private static HashMap<String, Integer> getPuntos(Map<String, ArrayList<Pronostico>> pronosticos){
-        HashMap<String,Integer> puntajes = new HashMap<>();
+    private static HashMap<String, Integer> getPuntos(Map<String, ArrayList<Pronostico>> pronosticos) {
+        HashMap<String, Integer> puntajes = new HashMap<>();
         pronosticos.forEach((nom, pronosticosArray) -> {
             int puntos = 0;
-            for (Pronostico p:pronosticosArray) {
+            for (Pronostico p : pronosticosArray) {
                 try {
-                    puntos+=p.puntos();
+                    puntos += p.puntos();
                 } catch (TeamNotFound e) {
                     throw new RuntimeException(e);
                 }
             }
-            puntajes.put(nom,puntos);
+            puntajes.put(nom, puntos);
         });
         return puntajes;
     }
@@ -55,17 +54,18 @@ public class Main {
                 for (int i = 0; i < line.length() - nombre.length() - 1; i++) {
                     char c = line.charAt(i + nombre.length() + 1);
                     switch (i) {
-                        case 0 -> pronostico.setEquipo(findById(equipos, Character.getNumericValue(c)));
-                        case 2 -> {
+                        case 0 -> pronostico.setNroRonda(String.valueOf(c));
+                        case 2 -> pronostico.setEquipo(findById(equipos, Character.getNumericValue(c)));
+                        case 4 -> {
                             if (c == 'X') pronostico.setResultado(ResultadoEnum.Ganador);
                         }
-                        case 3 -> {
+                        case 5 -> {
                             if (c == 'X') pronostico.setResultado(ResultadoEnum.Empate);
                         }
-                        case 4 -> {
+                        case 6 -> {
                             if (c == 'X') pronostico.setResultado(ResultadoEnum.Perdedor);
                         }
-                        case 6 -> pronostico.setPartido(buscarPartido(rondas, line.split(",")[5]));
+                        case 8 -> pronostico.setPartido(buscarPartido(rondas,line.split(",")[1], line.split(",")[6]));
                     }
                 }
                 ArrayList<Pronostico> pronosticoArray;
@@ -83,13 +83,15 @@ public class Main {
         return pronosticos;
     }
 
-    public static Partido buscarPartido(List<Ronda> rondas, String ids) throws PartidoNoEncontrado {
+    public static Partido buscarPartido(List<Ronda> rondas, String nroRonda, String ids) throws PartidoNoEncontrado {
         char id1 = ids.charAt(0);
         char id2 = ids.charAt(2);
         for (Ronda ronda : rondas) {
-            for (Partido partido : ronda.getPartidos()) {
-                if (partido.getEquipo1().getId() == Character.getNumericValue(id1) && partido.getEquipo2().getId() == Character.getNumericValue(id2)) {
-                    return partido;
+            if (ronda.getNro().equals(nroRonda)) {
+                for (Partido partido : ronda.getPartidos()) {
+                    if (partido.getEquipo1().getId() == Character.getNumericValue(id1) && partido.getEquipo2().getId() == Character.getNumericValue(id2)) {
+                        return partido;
+                    }
                 }
             }
         }
