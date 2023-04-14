@@ -1,6 +1,6 @@
 Nombre,Apuesta a (Equipo ID),Ganador,Empate,Perdedor,Partido (ID1 - ID2)
 Eros,2,,,X,2-1
-Fran,3,,X,,3-2
+Fran,3,,,X,3-2
 Charly,1,,,X,1-3
 Charly,3,X,,,3-2
 Axel,3,,X,,1-3

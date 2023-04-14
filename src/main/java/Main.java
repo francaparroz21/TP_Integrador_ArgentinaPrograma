@@ -22,13 +22,16 @@ public class Main {
 
 
         List<Ronda> rondas = leerRondas(resultadoRondas, equipos);
-        Map<String, ArrayList<Pronostico>> pronosticos = leerPronosticos(resultadosPronosticos, equipos, rondas);
+        HashMap<String, ArrayList<Pronostico>> pronosticos = leerPronosticos(resultadosPronosticos, equipos, rondas);
 
-        getPuntos(pronosticos);
+        System.out.println(getPuntos(pronosticos));
+
+
 
     }
 
-    private static void getPuntos(Map<String, ArrayList<Pronostico>> pronosticos){
+    private static HashMap<String, Integer> getPuntos(Map<String, ArrayList<Pronostico>> pronosticos){
+        HashMap<String,Integer> puntajes = new HashMap<>();
         pronosticos.forEach((nom, pronosticosArray) -> {
             int puntos = 0;
             for (Pronostico p:pronosticosArray) {
@@ -38,12 +41,13 @@ public class Main {
                     throw new RuntimeException(e);
                 }
             }
-            System.out.println(nom +puntos);
+            puntajes.put(nom,puntos);
         });
+        return puntajes;
     }
 
-    public static Map<String, ArrayList<Pronostico>> leerPronosticos(List<String> resultadosPronosticos, ArrayList<Equipo> equipos, List<Ronda> rondas) {
-        Map<String, ArrayList<Pronostico>> pronosticos = new HashMap<>();
+    public static HashMap<String, ArrayList<Pronostico>> leerPronosticos(List<String> resultadosPronosticos, ArrayList<Equipo> equipos, List<Ronda> rondas) {
+        HashMap<String, ArrayList<Pronostico>> pronosticos = new HashMap<>();
         try {
             for (String line : resultadosPronosticos) {
                 String nombre = line.split(",")[0];
