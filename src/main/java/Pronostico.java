@@ -50,7 +50,7 @@ public class Pronostico {
         this.resultado = resultado;
     }
 
-    public int puntos() throws TeamNotFound {
+    public int puntos() throws EquipoNoEncontrado {
         if (getPartido().resultado(getEquipo()) == getResultado()) return 1;
         return 0;
     }

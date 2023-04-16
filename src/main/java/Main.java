@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.util.*;
 public class Main {
 
-    public static void main(String[] args) throws IOException, TeamNotFound {
+    public static void main(String[] args) throws IOException, EquipoNoEncontrado {
 
         List<String> resultadoRondas = getFile("./src/archivos/rondas.csv");
         List<String> resultadosPronosticos = getFile("./src/archivos/pronosticos.csv");
@@ -33,7 +33,7 @@ public class Main {
             for (Pronostico p : pronosticosArray) {
                 try {
                     puntos += p.puntos();
-                } catch (TeamNotFound e) {
+                } catch (EquipoNoEncontrado e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -52,7 +52,7 @@ public class Main {
                     char c = line.charAt(i + nombre.length() + 1);
                     switch (i) {
                         case 0 -> pronostico.setNroRonda(String.valueOf(c));
-                        case 2 -> pronostico.setEquipo(findById(equipos, Character.getNumericValue(c)));
+                        case 2 -> pronostico.setEquipo(findTeamById(equipos, Character.getNumericValue(c)));
                         case 4 -> {
                             if (c == 'X') pronostico.setResultado(ResultadoEnum.Ganador);
                         }
@@ -106,10 +106,10 @@ public class Main {
                 for (int j = 0; j < resultadoRonda.length(); j++) {
                     char c = resultadoRonda.charAt(j);
                     switch (j) {
-                        case 2 -> p.setEquipo1(findById(equipos, Character.getNumericValue(c)));
+                        case 2 -> p.setEquipo1(findTeamById(equipos, Character.getNumericValue(c)));
                         case 4 -> p.setGolesEquipo1(Character.getNumericValue(c));
                         case 6 -> p.setGolesEquipo2(Character.getNumericValue(c));
-                        case 8 -> p.setEquipo2(findById(equipos, Character.getNumericValue(c)));
+                        case 8 -> p.setEquipo2(findTeamById(equipos, Character.getNumericValue(c)));
                     }
                 }
                 char numRound = resultadoRonda.charAt(0);
@@ -128,7 +128,6 @@ public class Main {
         }
         return rondas;
     }
-
     public static ArrayList<Ronda> sortRound(ArrayList<Ronda> rounds) {
         Collections.sort(rounds, new Comparator<Ronda>() {
             public int compare(Ronda r1, Ronda r2) {
@@ -137,33 +136,20 @@ public class Main {
         });
         return rounds;
     }
-
     public static boolean findRound(char c, ArrayList<Ronda> rounds) {
         for (Ronda r : rounds) if (r.getNro().equals(String.valueOf(c))) return true;
         return false;
     }
-
     public static Ronda findRoundByNum(char num, ArrayList<Ronda> rounds) {
         for (Ronda r : rounds) {
             if (r.getNro().equals(String.valueOf(num))) return r;
         }
         return null;
     }
-
-
-    /*
-    FindById: toma como argumento un arraylist y un id como entero, si encuentra el equipo con su id
-    lo devuelve en forma de Objeto(Equipo).
-    Sino, arroja una exception, que no se encontro ningun equipo en el arraylist.
-     */
-    public static Equipo findById(ArrayList<Equipo> teams, int id) throws TeamNotFound {
+    public static Equipo findTeamById(ArrayList<Equipo> teams, int id) throws EquipoNoEncontrado {
         for (Equipo equipo : teams) if (id == equipo.getId()) return equipo;
-        throw new TeamNotFound();
+        throw new EquipoNoEncontrado();
     }
-
-    /*Metodo para obtener el archivo y devolverlo en un arraylist.
-        Si no lo encuentra arroja una exception.
-     */
     public static List<String> getFile(String filename) throws IOException {
         Path path = Paths.get(filename);
         List<String> file = (ArrayList<String>) Files.readAllLines(path, StandardCharsets.UTF_8);

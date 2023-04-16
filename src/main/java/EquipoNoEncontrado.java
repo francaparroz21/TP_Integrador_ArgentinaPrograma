@@ -1,4 +1,4 @@
-public class TeamNotFound extends Exception{
+public class EquipoNoEncontrado extends Exception{
     @Override
     public String getMessage() {
         return "No se encontro ningun equipo en la lista. ";
