@@ -1,3 +1,5 @@
+package com.tp_integrador_argprograma.demo;
+
 public class Equipo {
     private int id;
     private String nombre;

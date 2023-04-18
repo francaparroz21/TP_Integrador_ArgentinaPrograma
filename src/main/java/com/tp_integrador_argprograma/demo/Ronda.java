@@ -1,3 +1,5 @@
+package com.tp_integrador_argprograma.demo;
+
 public class Ronda {
     private String nro;
     private Partido[] partidos;
@@ -29,7 +31,7 @@ public class Ronda {
 
     @Override
     public String toString() {
-        String toString = "Ronda "+ getNro() + "- maximo de puntos: "+ puntos();
+        String toString = "com.tp_integrador_argprograma.demo.Ronda "+ getNro() + "- maximo de puntos: "+ puntos();
         for (int i = 0; i < getPartidos().length; i++) {
             toString += "\n" + getPartidos()[i];
         }

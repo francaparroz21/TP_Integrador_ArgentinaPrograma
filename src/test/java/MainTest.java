@@ -1,3 +1,7 @@
+import com.tp_integrador_argprograma.demo.Equipo;
+import com.tp_integrador_argprograma.demo.EquipoNoEncontrado;
+import com.tp_integrador_argprograma.demo.Main;
+import com.tp_integrador_argprograma.demo.Ronda;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -94,6 +98,6 @@ class MainTest {
         List<String> filePronosticos = Files.readAllLines(pronosticos);
 
         assertEquals(fileRondas.subList(1,fileRondas.size()),Main.getFile(pathRondas));
-        assertEquals(filePronosticos.subList(1,filePronosticos.size()),Main.getFile(pathPronosticos));
+        assertEquals(filePronosticos.subList(1,filePronosticos.size()), Main.getFile(pathPronosticos));
     }
 }

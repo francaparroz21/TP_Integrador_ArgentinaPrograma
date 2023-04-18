@@ -1,3 +1,5 @@
+package com.tp_integrador_argprograma.demo;
+
 public class Pronostico {
     private Partido partido;
     private String nroRonda;

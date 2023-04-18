@@ -1,3 +1,6 @@
+import com.tp_integrador_argprograma.demo.Equipo;
+import com.tp_integrador_argprograma.demo.Partido;
+import com.tp_integrador_argprograma.demo.Ronda;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

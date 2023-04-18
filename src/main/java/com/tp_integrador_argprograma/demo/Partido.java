@@ -1,3 +1,5 @@
+package com.tp_integrador_argprograma.demo;
+
 public class Partido {
     private Equipo equipo1;
     private Equipo equipo2;
@@ -61,6 +63,6 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido: " + getEquipo1().getNombre()+"("+getGolesEquipo1()+")" + " vs " + getEquipo2().getNombre()+"("+getGolesEquipo2()+")";
+        return "com.tp_integrador_argprograma.demo.Partido: " + getEquipo1().getNombre()+"("+getGolesEquipo1()+")" + " vs " + getEquipo2().getNombre()+"("+getGolesEquipo2()+")";
     }
 }
