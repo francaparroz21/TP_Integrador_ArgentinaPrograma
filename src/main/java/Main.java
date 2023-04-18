@@ -141,9 +141,7 @@ public class Main {
         return false;
     }
     public static Ronda findRoundByNum(char num, ArrayList<Ronda> rounds) {
-        for (Ronda r : rounds) {
-            if (r.getNro().equals(String.valueOf(num))) return r;
-        }
+        for (Ronda r : rounds) if (r.getNro().equals(String.valueOf(num))) return r;
         return null;
     }
     public static Equipo findTeamById(ArrayList<Equipo> teams, int id) throws EquipoNoEncontrado {

@@ -19,22 +19,50 @@ class MainTest {
 
     @Test
     void buscarPartido() {
+
     }
 
     @Test
     void leerRondas() {
+
     }
 
     @Test
     void sortRound() {
+        ArrayList<Ronda> rondas = new ArrayList<>();
+        Ronda r1 = new Ronda("1");
+        Ronda r2 = new Ronda("2");
+        Ronda r3 = new Ronda("3");
+        Collections.addAll(rondas,r2,r3,r1);
+        Main.sortRound(rondas);
+
+
     }
 
     @Test
     void findRound() {
+        ArrayList<Ronda> rondas = new ArrayList<>();
+        Ronda r1 = new Ronda("1");
+        Ronda r2 = new Ronda("2");
+        Ronda r3 = new Ronda("3");
+        Collections.addAll(rondas,r1,r2,r3);
+
+        assertEquals(true,Main.findRound('2',rondas));
+        assertFalse(Main.findRound('5',rondas));
     }
 
     @Test
     void findRoundByNum() {
+        ArrayList<Ronda> rondas = new ArrayList<>();
+        Ronda r1 = new Ronda("1");
+        Ronda r2 = new Ronda("2");
+        Ronda r3 = new Ronda("3");
+        Collections.addAll(rondas,r1,r2,r3);
+
+        assertEquals(r1, Main.findRoundByNum('1',rondas));
+        assert  r1 == Main.findRoundByNum('1',rondas);
+        assertNull(Main.findRoundByNum('4',rondas));
+        assert Main.findRoundByNum('4',rondas) == null;
     }
 
     @Test
@@ -45,11 +73,13 @@ class MainTest {
         Equipo racing = new Equipo(3, "Racing", "Club");
         Collections.addAll(equipos,boca,racing,river);
 
-        assertEquals(Main.findTeamById(equipos,3),racing);
+
+        assertEquals(racing,Main.findTeamById(equipos,3));
         assertThrows(EquipoNoEncontrado.class,()->{
             Main.findTeamById(equipos,4);
         },"No se encontro ningun equipo en la lista.");
 
+        assert racing == Main.findTeamById(equipos,3);
     }
 
     @Test
@@ -63,7 +93,7 @@ class MainTest {
         List<String> fileRondas = Files.readAllLines(rondas);
         List<String> filePronosticos = Files.readAllLines(pronosticos);
 
-        assertEquals(Main.getFile(pathRondas), fileRondas.subList(1,fileRondas.size()));
-        assertEquals(Main.getFile(pathPronosticos), filePronosticos.subList(1,filePronosticos.size()));
+        assertEquals(fileRondas.subList(1,fileRondas.size()),Main.getFile(pathRondas));
+        assertEquals(filePronosticos.subList(1,filePronosticos.size()),Main.getFile(pathPronosticos));
     }
 }
