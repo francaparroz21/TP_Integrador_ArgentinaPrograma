@@ -1,4 +1,4 @@
-com.tp_integrador_argprograma.demo.Ronda n°,com.tp_integrador_argprograma.demo.Equipo 1 - id,Goles equipo 1,Goles equipo 2,com.tp_integrador_argprograma.demo.Equipo 2 - id
+com.tp_integrador_argprograma.demo.model.Ronda n°,com.tp_integrador_argprograma.demo.model.Team 1 - id,Goles team 1,Goles team 2,com.tp_integrador_argprograma.demo.model.Team 2 - id
 1,2,2,1,1
 4,3,0,1,2
 1,1,0,3,3

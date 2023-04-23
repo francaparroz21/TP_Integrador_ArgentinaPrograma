@@ -1,4 +1,4 @@
-package com.tp_integrador_argprograma.demo;
+package com.tp_integrador_argprograma.demo.exceptions;
 
 public class PartidoNoEncontrado extends Exception{
     @Override
