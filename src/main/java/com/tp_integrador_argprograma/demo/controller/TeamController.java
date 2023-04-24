@@ -27,4 +27,17 @@ public class TeamController {
     public ResponseEntity<Team> saveTeam(@RequestBody Team team){
         return new ResponseEntity<>(service.saveTeam(team), HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteTeam(@PathVariable("id") Long id){
+        return ResponseEntity.ok(service.deleteTeam(id));
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Team> updateTeam(@PathVariable("id") Long id,@RequestBody Team team){
+        return ResponseEntity.ok(service.updateTeam(id,team));
+    }
+
+
+
 }

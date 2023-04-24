@@ -5,7 +5,6 @@ import com.tp_integrador_argprograma.demo.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,5 +19,22 @@ public class TeamService {
 
     public Team saveTeam(Team team) {
         return repository.save(team);
+    }
+
+    public boolean deleteTeam(Long id) {
+        if (repository.findById(id).isPresent()) {
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    public Team updateTeam(Long id,Team team) {
+        Team teamFinded = repository.findById(id).get();
+
+        if (!teamFinded.getName().equals(team.getName())) teamFinded.setName(team.getName());
+        if (!teamFinded.getDescription().equals(team.getDescription())) teamFinded.setDescription(team.getDescription());
+
+        return repository.save(teamFinded);
     }
 }
