@@ -1,7 +1,6 @@
 package com.tp_integrador_argprograma.demo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -13,7 +12,7 @@ import lombok.NonNull;
 public class Team {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY)
-    private Long id;
+    private Long teamId;
     @NonNull
     @Column
     private String name;
