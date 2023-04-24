@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Table(name = "games")
 @Entity
 @Data
+@NoArgsConstructor
 public class Game {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY)
