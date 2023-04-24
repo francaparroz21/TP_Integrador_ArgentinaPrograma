@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "a9ca9138-3d24-4e78-8bdb-a8dac24c85cd",
+		"name": "games",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24238287"
+	},
+	"item": [
+		{
+			"name": "obtener games",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "guardar partido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/games",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"games"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
