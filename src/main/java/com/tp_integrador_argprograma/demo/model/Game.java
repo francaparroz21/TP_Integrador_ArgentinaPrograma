@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NonNull;
-@JsonIdentityInfo(generator= ObjectIdGenerators.UUIDGenerator.class, property="id")
+
 @Table(name = "games")
 @Entity
 @Data
