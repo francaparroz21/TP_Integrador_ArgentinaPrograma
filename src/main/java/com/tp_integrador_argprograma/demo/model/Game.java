@@ -14,14 +14,12 @@ public class Game {
     @GeneratedValue( strategy= GenerationType.IDENTITY)
     private Long gameId;
     @ManyToOne
-    @JoinColumn(name = "teamId")
+    @JoinColumn(name = "team1")
     @NonNull
-    @Column
     private Team team1;
     @ManyToOne
-    @JoinColumn(name = "teamId")
+    @JoinColumn(name = "team2")
     @NonNull
-    @Column
     private Team team2;
     @NonNull
     @Column
