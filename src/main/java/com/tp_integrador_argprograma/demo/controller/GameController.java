@@ -29,7 +29,7 @@ public class GameController {
     public ResponseEntity<Boolean> deleteGame(@PathVariable("id") Long id){
         return ResponseEntity.ok(service.deleteGame(id));
     }
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Game> updateGame(@PathVariable("id") Long id,@RequestBody Game game){
         return ResponseEntity.ok(service.updateGame(id,game));
     }

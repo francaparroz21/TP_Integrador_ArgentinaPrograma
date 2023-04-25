@@ -23,5 +23,5 @@ public class Forecast {
     private Team team;
     @NonNull
     @Column
-    private ResultadoEnum result;
+    private String result;
 }
