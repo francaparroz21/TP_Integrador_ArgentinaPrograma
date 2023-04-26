@@ -24,6 +24,5 @@ public class Player {
     private List<Forecast> forecasts;
 
     @Column
-    @NonNull
     private int points;
 }

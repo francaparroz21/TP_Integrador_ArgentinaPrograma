@@ -16,7 +16,10 @@ public class PlayerService {
         return repository.findAll();
     }
 
-    public Player savePlayer(Player player){
+    public Player savePlayer(String name){
+        Player player = new Player();
+        player.setName(name);
+        player.setPoints(0);
         return repository.save(player);
     }
 

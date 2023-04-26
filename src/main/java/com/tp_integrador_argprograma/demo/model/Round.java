@@ -3,6 +3,7 @@ package com.tp_integrador_argprograma.demo.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Entity
 @Table(name = "rounds")
@@ -16,6 +17,8 @@ public class Round {
     @Column
     private String roundNum;
 
-    @ElementCollection(targetClass = Game.class)
+    @OneToMany
+    @JoinColumn(name = "forecasts")
+    @NonNull
     private Game[] games;
 }

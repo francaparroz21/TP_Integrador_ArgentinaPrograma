@@ -3,6 +3,7 @@ package com.tp_integrador_argprograma.demo.controller;
 import com.tp_integrador_argprograma.demo.model.Player;
 import com.tp_integrador_argprograma.demo.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,8 @@ public class PlayerController {
     }
 
     @PostMapping
-    public ResponseEntity<Player> savePlayer(@RequestBody Player player){
-        return new ResponseEntity<>(service.savePlayer(player), HttpStatus.CREATED);
+    public String savePlayer(Model model, @RequestParam String name){
+        service.savePlayer(name);
+        return getPlayers(model);
     }
 }

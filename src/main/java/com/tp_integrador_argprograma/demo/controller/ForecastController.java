@@ -26,4 +26,10 @@ public class ForecastController {
     public ResponseEntity<Forecast> saveForecast(@RequestBody Forecast forecast){
         return new ResponseEntity<>(service.saveForecast(forecast), HttpStatus.CREATED);
     }
+
+    @PostMapping(value = "/{id}")
+    public ResponseEntity<List<Forecast>> savePlayerForecast(@PathVariable("id") Long id,@RequestBody Forecast forecast){
+        return new ResponseEntity<>(service.savePlayerForecast(id,forecast),HttpStatus.CREATED);
+    }
+
 }
