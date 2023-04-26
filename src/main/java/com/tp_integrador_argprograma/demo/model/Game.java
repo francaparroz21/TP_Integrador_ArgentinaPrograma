@@ -13,7 +13,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 public class Game {
     @Id
-    @GeneratedValue( strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long gameId;
     @ManyToOne
     @JoinColumn(name = "team1")
@@ -30,4 +30,8 @@ public class Game {
     @Column
     private int goalsTeam2;
 
+    @Override
+    public String toString() {
+        return "Partido: " + getTeam1().getName() + "(" + getGoalsTeam1() + ")" + getTeam2().getName() + "(" + getGoalsTeam2() + ")";
+    }
 }

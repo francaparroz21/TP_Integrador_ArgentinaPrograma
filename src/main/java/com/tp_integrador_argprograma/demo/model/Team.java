@@ -19,4 +19,5 @@ public class Team {
     @NonNull
     @Column
     private String description;
+
 }

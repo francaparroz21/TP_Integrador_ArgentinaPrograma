@@ -24,4 +24,9 @@ public class Forecast {
     @NonNull
     @Column
     private String result;
+
+    @Override
+    public String toString() {
+        return game.toString() + ", \n Aposto a: " + team.getName() + " que salia " + getResult();
+    }
 }
