@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PLAY</title>
+    <link rel="stylesheet" href="/css/play.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div>
+        <h1 class="text-center">Lista de Partidos para apostar</h1>.
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr class="table-dark">
+            <th scope="col">Partido ID</th>
+            <th scope="col">Equipo1</th>
+            <th scope="col">Equipo2</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="game : ${games}">
+            <td th:text="${game.gameId}" scope="row">ID</td>
+            <td th:text="${game.team1.name}">Nombre</td>
+            <td th:text="${game.team2.name}">Nombre</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr class="table-dark">
+            <th scope="col">Equipo ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="team : ${teams}">
+            <td th:text="${team.teamId}" scope="row">ID</td>
+            <td th:text="${team.name}">Nombre</td>
+            <td th:text="${team.description}">Nombre</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form class="form-forecast" th:action="@{/forecasts/} + ${user.name}" method="post">
+        <label class="text-center">Haz un pronostico</label>
+
+        <label>Partido</label>
+        <input placeholder="Insert match Id" name="matchId">
+        <label>Equipo</label>
+        <input placeholder="Insert team Id" name="teamId">
+        <label>Resultado</label>
+        <select name="result">
+            <option value="Ganador">Ganador</option>
+            <option value="Empate">Empate</option>
+            <option value="Perdedor">Perdedor</option>
+        </select>
+        <input type="submit" value="Enviar pronostico">
+
+    </form>
+
+    <div class="list-players">
+        <h1 class="text-center">Lista de jugadores.</h1>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr class="table-dark">
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Pronosticos</th>
+            <th scope="col">Puntos</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="player : ${players}">
+            <td th:text="${player.playerId}" scope="row">ID</td>
+            <td th:text="${player.name}">Nombre</td>
+            <td th:text="${player.forecasts}"></td>
+            <td th:text="${player.points}">Puntos</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
