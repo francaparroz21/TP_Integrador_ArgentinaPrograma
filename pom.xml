@@ -72,8 +72,13 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 			<version>3.0.6</version>
 		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>

@@ -33,9 +33,4 @@ public class TeamController {
         return ResponseEntity.ok(service.deleteTeam(id));
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<Team> updateTeam(@PathVariable("id") Long id,@RequestBody Team team){
-        return ResponseEntity.ok(service.updateTeam(id,team));
-    }
-
 }
