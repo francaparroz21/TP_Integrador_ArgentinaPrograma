@@ -1,4 +1,8 @@
 # TP Integrador Argentina Programa
 
-## Diagrama de clases
-![Diagrama de clases](https://firebasestorage.googleapis.com/v0/b/asdd-e8832.appspot.com/o/diagramaDeClases.PNG?alt=media&token=e1492d24-bafb-44ef-a6e9-04194e357d27)
+## Para empezar a jugar = 'localhost:8080/'
+
+![HOME](https://github.com/francaparroz21/TP_Integrador_ArgentinaPrograma/blob/master/assets/home.PNG)
+![FORECAST](https://github.com/francaparroz21/TP_Integrador_ArgentinaPrograma/blob/master/assets/apuesta.PNG)
+![RESULTS](https://github.com/francaparroz21/TP_Integrador_ArgentinaPrograma/blob/master/assets/resultados.PNG)
+
