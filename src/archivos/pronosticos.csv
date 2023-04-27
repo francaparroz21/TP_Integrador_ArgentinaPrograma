@@ -1,7 +1,0 @@
-Nombre,com.tp_integrador_argprograma.demo.model.Ronda (nro),Apuesta a (com.tp_integrador_argprograma.demo.model.Team ID),Ganador,Empate,Perdedor,com.tp_integrador_argprograma.demo.model.Partido (ID1 - ID2)
-Eros,1,2,,,X,2-1
-Fran,4,3,,,X,3-2
-Charly,1,1,,,X,1-3
-Charly,2,2,X,,,2-1
-Axel,3,1,,X,,2-1
-Eros,4,1,,,X,1-3
