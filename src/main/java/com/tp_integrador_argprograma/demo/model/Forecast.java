@@ -1,6 +1,7 @@
 package com.tp_integrador_argprograma.demo.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -24,6 +25,12 @@ public class Forecast {
     @NonNull
     @Column
     private String result;
+
+    public Forecast(Game game, Team team, String result) {
+        this.game = game;
+        this.team = team;
+        this.result = result;
+    }
 
     @Override
     public String toString() {

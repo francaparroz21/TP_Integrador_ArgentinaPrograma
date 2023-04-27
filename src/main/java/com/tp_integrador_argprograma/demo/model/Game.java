@@ -2,6 +2,7 @@ package com.tp_integrador_argprograma.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.tp_integrador_argprograma.demo.exceptions.EquipoNoEncontrado;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,5 +34,18 @@ public class Game {
     @Override
     public String toString() {
         return "Partido: " + getTeam1().getName() + "(" + getGoalsTeam1() + ")" + getTeam2().getName() + "(" + getGoalsTeam2() + ")";
+    }
+
+    public String result(Team team) throws EquipoNoEncontrado {
+        if (team == getTeam1()) {
+            if (getGoalsTeam1() > getGoalsTeam2()) return "Ganador";
+            else if (getGoalsTeam1() == getGoalsTeam2()) return "Empate";
+            return "Perdedor";
+        } else if (team == getTeam2()) {
+            if (getGoalsTeam1() < getGoalsTeam2()) return "Ganador";
+            else if (getGoalsTeam1() == getGoalsTeam2()) return "Empate";
+            return "Perdedor";
+        }
+        throw new EquipoNoEncontrado();
     }
 }

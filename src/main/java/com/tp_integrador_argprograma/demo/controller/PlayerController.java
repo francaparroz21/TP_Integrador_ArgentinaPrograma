@@ -19,14 +19,12 @@ public class PlayerController {
     PlayerService service;
 
     @GetMapping
-    public String getPlayers(Model model) {
-        model.addAttribute("players",service.getPlayers());
-        return "players";
+    public ResponseEntity<List<Player>> getPlayers() {
+        return ResponseEntity.ok(service.getPlayers());
     }
 
     @PostMapping
-    public String savePlayer(Model model, @RequestParam String name){
-        service.savePlayer(name);
-        return getPlayers(model);
+    public ResponseEntity<Player> savePlayer(@RequestParam String name){
+        return new ResponseEntity<>(service.savePlayer(name),HttpStatus.CREATED);
     }
 }
