@@ -1,6 +1,7 @@
 # TP Integrador Argentina Programa
 
-## Para empezar a jugar = 'localhost:8080/'
+
+## Para empezar a jugar (NO OLVIDE CARGAR LOS EQUIPOS Y PARTIDOS) = 'localhost:8080/'
 ### INICIO
 ![HOME](https://github.com/francaparroz21/TP_Integrador_ArgentinaPrograma/blob/master/assets/home.PNG)
 ### APUESTA
